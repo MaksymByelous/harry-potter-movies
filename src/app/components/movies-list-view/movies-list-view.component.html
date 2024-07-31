@@ -1,0 +1,46 @@
+<form [formGroup]="filtersForm">
+  <fieldset>
+    <legend>Filters</legend>
+    <div class="row">
+      <div class="col-sm-12 col-md-5">
+        <label for="title">Title</label>
+        <input formControlName='title' type="text" id="title" placeholder="Movie"/>
+      </div>
+      <div class="col-sm-12 col-md-7">
+        <label for="year">Release year</label>
+        <input formControlName="year" type="number" id="year" placeholder="0000"/>
+      </div>
+    </div>
+
+    @if (filtersForm.get('year')?.invalid) {
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="error">Please fill in year from {{ startYear }} to {{currentYear}} or <span class="year-reset" (click)="filtersForm.get('year')?.setValue(null)">reset</span> filter</p>
+        </div>
+      </div>
+    }
+  </fieldset>
+</form>
+
+@for (movie of movies; track movie.id) {
+    <div class="movie-list-item">
+      <div class="movie-info">
+        <div class="title">
+        {{movie.title}}
+        </div>
+        <div class="movie-info_data">
+          <span>Release date: {{movie.release_date}}</span>
+          <span>Budget: {{movie.budget | budget}}</span>
+          <span>Duration: {{movie.duration | duration}}</span>
+        </div>
+      </div>
+      <div class="movie-navigation">
+        @if (movie.id) {
+          <button (click)="openDetails(movie.id)" class="primary">Details</button>
+        }
+      </div>
+    </div>
+  } @empty {
+    <p>No movies found</p>
+  }
+

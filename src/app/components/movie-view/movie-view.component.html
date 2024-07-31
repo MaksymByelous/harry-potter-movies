@@ -1,0 +1,45 @@
+<header>
+  <p>
+    <a routerLink="/movies" aria-label="back to movies" class="back-link">
+      <span class="icon-home"></span>
+      Back
+    </a>
+  </p>
+</header>
+
+@if (movie) {
+  <h3>{{movie.title}}</h3>
+  <div class="row">
+    <div class="col-sm-2">
+      <img [src]="movie.poster" alt="movie poster" />
+    </div>  <div class="col-sm-10">
+      <p>{{movie.summary}}</p>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="horizontal">
+        <caption>Details</caption>
+        <thead>
+        <tr>
+          <th>Box office</th>
+          <th>Budget</th>
+          <th>Duration</th>
+          <th>Producers</th>
+          <th>Cinematographers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td data-label="box-office">{{movie.box_office | budget}}</td>
+          <td data-label="budget">{{movie.budget | budget}}</td>
+          <td data-label="duration">{{movie.duration | duration}}</td>
+          <td data-label="producers">{{movie.producers.join(', ')}}</td>
+          <td data-label="cinematographers">{{movie.cinematographers.join(', ')}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+}

@@ -1,0 +1,27 @@
+.movie-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 4px 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.movie-info .title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.movie-info_data span {
+  margin-right: 12px;
+  font-size: 14px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.year-reset {
+  text-decoration: underline;
+  cursor: pointer;
+}
