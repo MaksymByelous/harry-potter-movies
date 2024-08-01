@@ -23,8 +23,8 @@ import { Filters } from '../../models/filters';
 })
 export class MoviesListViewComponent implements OnInit, OnDestroy {
   filtersForm!: FormGroup;
-  startYear = 1888;
-  currentYear = new Date().getFullYear();
+  startYear: number = 1888;
+  currentYear: number = new Date().getFullYear();
   movies: Movies = [];
 
   private movieService = inject(MovieService);
@@ -35,7 +35,7 @@ export class MoviesListViewComponent implements OnInit, OnDestroy {
   private moviesSubscription!: Subscription;
   private filtersSubscription!: Subscription;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.filtersForm = this.formBuilder.group({
       title: [''],
       year: [
@@ -58,16 +58,16 @@ export class MoviesListViewComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.moviesSubscription?.unsubscribe();
     this.filtersSubscription?.unsubscribe();
   }
 
-  openDetails(movieId: string) {
+  openDetails(movieId: string): void {
     this.router.navigate(['/movies', movieId]);
   }
 
-  private filterMovies(filters: Filters) {
+  private filterMovies(filters: Filters): void {
     this.movies = this.moviesInitial.filter((movie) => {
       let matchesTitle = true;
       let matchesYear = true;

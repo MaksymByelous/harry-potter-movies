@@ -21,7 +21,7 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private movieSubscription!: Subscription;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.movieSubscription = this.movieService
       .getMovieDetails(this.movieId)
       .subscribe((movie) => {
@@ -29,11 +29,11 @@ export class MovieViewComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.movieSubscription?.unsubscribe();
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['/movies']);
   }
 }

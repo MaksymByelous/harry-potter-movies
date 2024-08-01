@@ -6,7 +6,7 @@ import { getCurrencySymbol } from '@angular/common';
   standalone: true,
 })
 export class BudgetPipe implements PipeTransform {
-  transform(budget: string, currencyCode: string = 'USD'): unknown {
+  transform(budget: string, currencyCode: string = 'USD'): string {
     if (!budget) return 'unknown';
 
     const currencySymbol = getCurrencySymbol(currencyCode, 'narrow');
