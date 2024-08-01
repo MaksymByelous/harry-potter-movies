@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { Subscription } from 'rxjs';
 import { MovieDetails } from '../../models/movie';
@@ -18,6 +18,7 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   movie!: MovieDetails;
 
   private movieService = inject(MovieService);
+  private router = inject(Router);
   private movieSubscription!: Subscription;
 
   ngOnInit() {
@@ -30,5 +31,9 @@ export class MovieViewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.movieSubscription?.unsubscribe();
+  }
+
+  goBack() {
+    this.router.navigate(['/movies']);
   }
 }
