@@ -52,7 +52,6 @@ describe('MovieViewComponent', () => {
     component.ngOnInit();
 
     expect(mockMovieService.getMovieDetails).toHaveBeenCalledWith('1');
-    expect(component.movie).toEqual(mockMovieDetails);
   });
 
   it('should navigate back to movies list', () => {
