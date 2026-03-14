@@ -3,7 +3,6 @@ import { MovieService } from '../../services/movie.service';
 import { Movies } from '../../models/movie';
 import { filter, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { CurrencyPipe } from '@angular/common';
 import { DurationPipe } from '../../pipes/duration.pipe';
 import { BudgetPipe } from '../../pipes/budget.pipe';
 import {
@@ -16,10 +15,10 @@ import { Filters } from '../../models/filters';
 
 @Component({
   selector: 'app-movies-list-view',
-  standalone: true,
-  imports: [CurrencyPipe, DurationPipe, BudgetPipe, ReactiveFormsModule],
+  imports: [DurationPipe, BudgetPipe, ReactiveFormsModule],
   templateUrl: './movies-list-view.component.html',
   styleUrl: './movies-list-view.component.css',
+  standalone: true,
 })
 export class MoviesListViewComponent implements OnInit, OnDestroy {
   filtersForm!: FormGroup;

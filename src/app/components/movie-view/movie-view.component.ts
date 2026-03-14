@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { Observable } from 'rxjs';
 import { MovieDetails } from '../../models/movie';
@@ -9,10 +9,10 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-movie-view',
-  standalone: true,
-  imports: [RouterLink, BudgetPipe, DurationPipe, AsyncPipe],
+  imports: [BudgetPipe, DurationPipe, AsyncPipe],
   templateUrl: './movie-view.component.html',
   styleUrl: './movie-view.component.css',
+  standalone: true,
 })
 export class MovieViewComponent implements OnInit {
   @Input() movieId!: string;
