@@ -1,10 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { MovieService } from './movie.service';
 import { Movies, MovieDetails } from '../models/movie';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('MovieService', () => {
   let service: MovieService;
@@ -12,9 +10,9 @@ describe('MovieService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [MovieService],
-    });
+    imports: [],
+    providers: [MovieService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     service = TestBed.inject(MovieService);
     httpMock = TestBed.inject(HttpTestingController);
